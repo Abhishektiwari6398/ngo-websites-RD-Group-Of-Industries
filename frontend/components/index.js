@@ -1,0 +1,9 @@
+export {default as Navbar} from './Navbar';
+export {default as Hero} from './Hero';
+export {default as About} from './About';
+export {default as NewsEventsPage} from './News&Events';
+export {default as OurPublications} from './OurPublications';
+export {default as members} from './Members';
+export {default as Gallery} from './Gallery';
+export {default as Faq} from './Facts';
+export {default as Footer} from './Footer';
