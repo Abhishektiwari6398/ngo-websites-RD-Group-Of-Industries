@@ -79,7 +79,7 @@ const HonorableMembersSection = ({ membersData }) => {
   const MemberCard = ({ member }) => (
     <div className="relative group cursor-pointer">
       {/* Member Image */}
-      <div className="relative h-80 w-full rounded-lg overflow-hidden">
+      <div className="relative h-64 sm:h-72 md:h-80 w-full rounded-lg overflow-hidden">
         <Image
           src={getImageUrl(member)}
           alt={getImageAlt(member)}
@@ -94,11 +94,11 @@ const HonorableMembersSection = ({ membersData }) => {
         <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-50"></div>
         
         {/* Content Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-          <h3 className="text-lg font-bold mb-2 leading-tight">
+        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white">
+          <h3 className="text-base sm:text-lg font-bold mb-1 sm:mb-2 leading-tight">
             {member.name}
           </h3>
-          <p className="text-sm opacity-90 leading-relaxed">
+          <p className="text-xs sm:text-sm opacity-90 leading-relaxed">
             {member.description}
           </p>
         </div>
@@ -106,19 +106,21 @@ const HonorableMembersSection = ({ membersData }) => {
     </div>
   );
 
-  // Parse title for highlighting "HONORABLE"
+  // Parse title for highlighting "माननीय"
   const renderTitle = () => {
     const words = title.split(' ');
     
     return (
-      <h2 className="font-inter font-bold text-[65px] leading-[100%] tracking-[-0.06em]">
+      <h2 className="font-inter font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[65px] leading-[100%] tracking-[-0.06em]">
         {words.map((word, index) => {
           const isHonorableWord = word.toUpperCase().includes('माननीय');
           return (
             <span
               key={index}
               className={`font-inter font-bold leading-[100%] tracking-[-0.06em] ${
-                isHonorableWord ? 'text-[70px]' : 'text-[65px]'
+                isHonorableWord 
+                  ? 'text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-[70px]' 
+                  : 'text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[65px]'
               }`}
               style={{ 
                 color: isHonorableWord ? styling.titleHighlightColor : styling.titleNormalColor
@@ -133,15 +135,15 @@ const HonorableMembersSection = ({ membersData }) => {
   };
 
   return (
-    <div className="py-16" style={{ backgroundColor: styling.backgroundColor }}>
+    <div className="py-8 sm:py-12 md:py-16" style={{ backgroundColor: styling.backgroundColor }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-12">
+        <div className="mb-8 sm:mb-10 md:mb-12">
           {renderTitle()}
         </div>
         
         {/* Members Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {members.map((member, index) => (
             <MemberCard key={member._id || member.id || index} member={member} />
           ))}

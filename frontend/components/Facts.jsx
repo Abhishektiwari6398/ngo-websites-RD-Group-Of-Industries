@@ -63,35 +63,35 @@ const FAQsFactsSection = () => {
   };
 
   return (
-    <div className="bg-white py-16">
+    <div className="bg-white py-8 sm:py-12 lg:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
           {/* FAQ Section */}
           <div>
-            <div className="mb-8">
-              <h2 className="font-inter font-bold text-[70px] leading-[100%] tracking-[-0.06em]">
+            <div className="mb-6 sm:mb-8">
+              <h2 className="font-inter font-bold text-[32px] sm:text-[48px] lg:text-[70px] leading-[100%] tracking-[-0.06em] text-center lg:text-left">
                 प्रश्नोत्तर
               </h2>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {faqs.map((faq, index) => (
                 <div key={faq.id} className="border-b border-gray-200">
                   <button
                     onClick={() => toggleFAQ(index)}
-                    className="w-full text-left py-4 flex items-center justify-between hover:text-orange-400 transition-colors duration-200"
+                    className="w-full text-left py-3 sm:py-4 flex items-start sm:items-center justify-between hover:text-orange-400 transition-colors duration-200"
                   >
-                    <div className="flex items-center">
-                      <span className="text-orange-400 font-bold text-lg mr-3">
+                    <div className="flex items-start sm:items-center flex-1 min-w-0">
+                      <span className="text-orange-400 font-bold text-base sm:text-lg mr-2 sm:mr-3 flex-shrink-0 mt-0.5 sm:mt-0">
                         {faq.id}
                       </span>
-                      <span className="text-lg font-medium text-gray-900">
+                      <span className="text-base sm:text-lg font-medium text-gray-900 leading-relaxed pr-2">
                         {faq.question}
                       </span>
                     </div>
-                    <div className="ml-4 flex-shrink-0">
+                    <div className="ml-2 sm:ml-4 flex-shrink-0 mt-0.5 sm:mt-0">
                       <svg
-                        className={`w-5 h-5 transform transition-transform duration-200 ${
+                        className={`w-4 h-4 sm:w-5 sm:h-5 transform transition-transform duration-200 ${
                           activeIndex === index ? 'rotate-180' : ''
                         }`}
                         fill="none"
@@ -109,8 +109,8 @@ const FAQsFactsSection = () => {
                   </button>
 
                   {activeIndex === index && (
-                    <div className="pb-4 pl-8">
-                      <p className="text-gray-600 leading-relaxed">
+                    <div className="pb-3 sm:pb-4 pl-6 sm:pl-8 pr-6 sm:pr-0">
+                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                         {faq.answer}
                       </p>
                     </div>
@@ -122,20 +122,20 @@ const FAQsFactsSection = () => {
 
           {/* Facts Section */}
           <div>
-            <div className="mb-8">
-              <h2 className="font-inter font-bold text-[70px] leading-[100%] tracking-[-0.06em] text-right">
+            <div className="mb-6 sm:mb-8">
+              <h2 className="font-inter font-bold text-[32px] sm:text-[48px] lg:text-[70px] leading-[100%] tracking-[-0.06em] text-center lg:text-right">
                 तथ्य
               </h2>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {facts.map((fact, index) => (
-                <div key={index} className="border-b border-gray-200 pb-4">
+                <div key={index} className="border-b border-gray-200 pb-3 sm:pb-4">
                   <div className="flex flex-col">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-1 sm:mb-2">
                       {fact.label}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                       {fact.value}
                     </p>
                   </div>

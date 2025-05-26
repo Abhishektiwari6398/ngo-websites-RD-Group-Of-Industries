@@ -38,7 +38,7 @@ const PublicationsSection = ({ publicationsData }) => {
   const PublicationCard = ({ publication }) => (
     <div className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300">
       {/* Image */}
-      <div className="relative h-48 w-full bg-[#969696]">
+      <div className="relative h-40 sm:h-44 md:h-48 w-full bg-[#969696]">
         {publication.image ? (
           <Image
             src={urlFor(publication.image).width(400).height(300).url()}
@@ -48,7 +48,7 @@ const PublicationsSection = ({ publicationsData }) => {
           />
         ) : (
           <div className="w-full h-full bg-[#969696] flex items-center justify-center">
-            <span className="text-white text-sm">No Image</span>
+            <span className="text-white text-xs sm:text-sm">No Image</span>
           </div>
         )}
         {publication.featured && (
@@ -64,44 +64,44 @@ const PublicationsSection = ({ publicationsData }) => {
       </div>
       
       {/* Content */}
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+      <div className="p-4 sm:p-5 md:p-6">
+        <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3 line-clamp-2">
           {publication.title}
         </h3>
         
-        <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+        <p className="text-gray-600 text-sm mb-3 sm:mb-4 line-clamp-3">
           {truncateDescription(publication.description)}
         </p>
         
         {/* Meta Information */}
-        <div className="space-y-2 mb-6">
-          <div className="flex items-center text-sm text-gray-500">
-            <div className="w-4 h-4 bg-orange-400 rounded-sm mr-2"></div>
+        <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
+          <div className="flex items-center text-xs sm:text-sm text-gray-500">
+            <div className="w-3 h-3 sm:w-4 sm:h-4 bg-orange-400 rounded-sm mr-2"></div>
             <span>{formatCategory(publication.category)}</span>
           </div>
           
-          <div className="flex items-center text-sm text-gray-500">
-            <div className="w-4 h-4 bg-orange-400 rounded-sm mr-2"></div>
+          <div className="flex items-center text-xs sm:text-sm text-gray-500">
+            <div className="w-3 h-3 sm:w-4 sm:h-4 bg-orange-400 rounded-sm mr-2"></div>
             <span>{getPrimaryAuthor(publication.authors)}</span>
           </div>
           
-          <div className="flex items-center text-sm text-gray-500">
-            <div className="w-4 h-4 bg-orange-400 rounded-sm mr-2"></div>
+          <div className="flex items-center text-xs sm:text-sm text-gray-500">
+            <div className="w-3 h-3 sm:w-4 sm:h-4 bg-orange-400 rounded-sm mr-2"></div>
             <span>{formatDate(publication.publishedAt)}</span>
           </div>
 
           {/* Journal/Conference */}
           {publication.journal && (
-            <div className="flex items-center text-sm text-gray-500">
-              <div className="w-4 h-4 bg-orange-400 rounded-sm mr-2"></div>
+            <div className="flex items-center text-xs sm:text-sm text-gray-500">
+              <div className="w-3 h-3 sm:w-4 sm:h-4 bg-orange-400 rounded-sm mr-2"></div>
               <span className="italic">{publication.journal}</span>
             </div>
           )}
 
           {/* Citation count */}
           {publication.citations && (
-            <div className="flex items-center text-sm text-gray-500">
-              <div className="w-4 h-4 bg-orange-400 rounded-sm mr-2"></div>
+            <div className="flex items-center text-xs sm:text-sm text-gray-500">
+              <div className="w-3 h-3 sm:w-4 sm:h-4 bg-orange-400 rounded-sm mr-2"></div>
               <span>{publication.citations} citations</span>
             </div>
           )}
@@ -109,7 +109,7 @@ const PublicationsSection = ({ publicationsData }) => {
         
         {/* Keywords */}
         {publication.keywords && publication.keywords.length > 0 && (
-          <div className="mb-4">
+          <div className="mb-3 sm:mb-4">
             <div className="flex flex-wrap gap-1">
               {publication.keywords.slice(0, 3).map((keyword, index) => (
                 <span
@@ -129,7 +129,7 @@ const PublicationsSection = ({ publicationsData }) => {
         {/* Action Buttons */}
         <div className="space-y-2">
           <Link href={`/publications/${publication.slug.current}`}>
-            <button className="w-full bg-orange-400 hover:bg-orange-500 text-white py-3 px-4 rounded font-medium transition-colors duration-200">
+            <button className="w-full bg-orange-400 hover:bg-orange-500 text-white py-2.5 sm:py-3 px-4 rounded font-medium transition-colors duration-200 text-sm sm:text-base">
              और पढ़ें →
             </button>
           </Link>
@@ -141,7 +141,7 @@ const PublicationsSection = ({ publicationsData }) => {
                 href={publication.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-3 rounded text-sm font-medium transition-colors duration-200 text-center"
+                className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-3 rounded text-xs sm:text-sm font-medium transition-colors duration-200 text-center"
               >
                 View Online
               </a>
@@ -151,7 +151,7 @@ const PublicationsSection = ({ publicationsData }) => {
                 href={publication.pdfFile.asset.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 bg-red-100 hover:bg-red-200 text-red-700 py-2 px-3 rounded text-sm font-medium transition-colors duration-200 text-center"
+                className="flex-1 bg-red-100 hover:bg-red-200 text-red-700 py-2 px-3 rounded text-xs sm:text-sm font-medium transition-colors duration-200 text-center"
               >
                 PDF
               </a>
@@ -163,17 +163,17 @@ const PublicationsSection = ({ publicationsData }) => {
   );
 
   return (
-    <div className="py-16">
+    <div className="py-8 sm:py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-12">
-          <h2 className="font-inter font-bold text-[50px] lg:text-[70px] leading-[100%] tracking-[-0.06em]">
-            हमारे <span className="font-inter font-bold text-[50px] lg:text-[70px] leading-[100%] tracking-[-0.06em] text-[#FFB338]"> प्रकाशन </span>
+        <div className="mb-8 sm:mb-10 md:mb-12">
+          <h2 className="font-inter font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[50px] 2xl:text-[70px] leading-[100%] tracking-[-0.06em]">
+            हमारे <span className="font-inter font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[50px] 2xl:text-[70px] leading-[100%] tracking-[-0.06em] text-[#FFB338]"> प्रकाशन </span>
           </h2>
         </div>
 
         {/* Publications Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-10 md:mb-12">
           {publicationsData && publicationsData.length > 0 ? (
             publicationsData.map((publication) => (
               <PublicationCard key={publication._id} publication={publication} />
@@ -189,7 +189,7 @@ const PublicationsSection = ({ publicationsData }) => {
         <div className="text-center">
           <Link 
             href="/publications" 
-            className="text-gray-700 hover:text-orange-400 font-medium text-lg hover:underline transition-colors duration-200"
+            className="text-gray-700 hover:text-orange-400 font-medium text-base sm:text-lg hover:underline transition-colors duration-200"
           >
           सभी को देखें →
           </Link>
